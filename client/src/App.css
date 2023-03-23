@@ -1,0 +1,91 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: url("./images/bg-body.gif");
+  background-repeat: repeat-x;
+}
+
+#header {
+  height: 72px;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0px 50px;
+}
+
+#header a#logo {
+  position: relative;
+}
+#header a#logo img {
+  border: 0;
+}
+/**-------------- Navigation style ---------------**/
+#header ul.navigation {
+  list-style-type: none;
+  padding: 0;
+  overflow: hidden;
+  display: flex;
+}
+#header ul.navigation li {
+  float: left;
+  height: 35px;
+  width: 90px;
+}
+#header ul.navigation li.active {
+  background: url("./images/menu.gif");
+  background-repeat: no-repeat;
+  background-position: 0 -160px;
+}
+#header ul.navigation li a {
+  text-decoration: none;
+  color: #2c1d00;
+  font-family: "Myriad Pro";
+  font-size: 14px;
+  font-weight: bold;
+  display: inline-block;
+  line-height: 35px;
+  background: url("./images/menu-separator.gif");
+  background-repeat: no-repeat;
+  background-position: right;
+  height: 35px;
+  padding: 0 20px 0 20px;
+  text-align: center;
+  width: 67px;
+}
+#header ul.navigation li a:hover {
+  color: #ffffff;
+}
+/**------------- Start of body style ----------------**/
+
+main {
+  height: auto;
+}
+
+#body div.banner {
+  background: url("./images/image-asset.jpeg");
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 550px;
+  background-color: #e5dfdfb3;
+}
+
+/**--------------- Start of footer style ------------------**/
+
+#footer #footnote {
+  background-color: #ffad00;
+}
+#footer #footnote .section {
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+  font-family: "Myriad Pro";
+  font-size: 13px;
+}
+#footer #footnote .section a {
+  text-decoration: none;
+  color: #000000;
+}
+#footer #footnote .section a:hover {
+  color: #ffffff;
+}

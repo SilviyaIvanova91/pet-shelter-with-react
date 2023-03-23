@@ -1,0 +1,96 @@
+.createPage {
+  background: url("../../images/mwtjvffkkv.png");
+  margin: 0px;
+  font-family: "Ubuntu", sans-serif;
+  background-size: 100% 110%;
+  height: 800px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.create-form {
+  display: block;
+  background: url("../../images/iStock-1324099927.jpg");
+  background-size: 100% 110%;
+  background-position: center;
+  border: 1px solid rgb(156, 152, 152);
+  padding: 40px;
+  margin-bottom: 15px;
+  border-radius: 3px;
+  border: 1px solid;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.createPage h2 {
+  text-align: center;
+  margin-top: -10px;
+  color: #703058;
+}
+
+.createPage label {
+  display: none;
+}
+
+.createPage input {
+  background-color: rgb(232 226 222 / 24%);
+  border: 0.1px solid rgb(33 30 28);
+  border-radius: 3px;
+  height: 30px;
+  padding-left: 2px;
+  width: 320px;
+  font-size: 16px;
+}
+
+.createPage input::placeholder,
+.createPage textarea::placeholder {
+  color: rgb(33 30 28);
+  padding-left: 5px;
+}
+
+.createPage textarea {
+  background-color: rgb(232 226 222 / 24%);
+  border: 0.1px solid rgb(33 30 28);
+  border-radius: 3px;
+  height: 100px;
+  padding-left: 2px;
+  width: 320px;
+  font-size: 16px;
+  resize: none;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.createPage button {
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  border: none;
+  width: 100%;
+  border-radius: 3px;
+  margin-top: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.createPage a {
+  color: white;
+}
+
+.createPage label {
+  display: initial !important;
+  margin-top: 12px;
+  margin-right: 5px;
+  white-space: nowrap;
+}
+
+.add-btn {
+  background-color: #e29508;
+}
+
+.edit-delete button:hover {
+  box-shadow: none;
+}

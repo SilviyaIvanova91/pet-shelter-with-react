@@ -1,0 +1,76 @@
+.catalog-body {
+  background-color: #e5dfdfb3;
+  margin: 0;
+}
+
+.catalog-img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+  height: 250px;
+}
+
+.pets-catalog {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: 25px 25px 0 25px;
+}
+
+.pet-card {
+  box-shadow: -7px 6px 11px #464a4e62;
+  width: 300px;
+  text-align: center;
+  background: #f3a420fc;
+  margin: 0px 10px;
+  padding: 20px 15px;
+  border-radius: 12px;
+}
+
+.pets-catalog h2 {
+  font-size: 26px;
+  font-weight: bolder;
+}
+
+.pets-catalog h3 {
+  font-size: 18px;
+}
+
+.pet-image {
+  position: relative;
+  width: 300px;
+  height: 300px;
+}
+
+.pet-card .action {
+  display: flex;
+  text-align: center;
+}
+
+.pet-card .btn {
+  width: 100px;
+  height: auto;
+  cursor: pointer;
+  border-radius: 10px;
+  align-items: center;
+  background-color: #f3c915;
+  color: black;
+  font-size: 18px;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 10px 0;
+  margin: 20px 5px 10px 100px;
+  box-shadow: 6px 6px 20px #464a4e62, -6px -6px 20px #464a4e62;
+}
+
+.action > a:hover {
+  box-shadow: none;
+}
+
+.no-pets {
+  font-size: 26px;
+  font-weight: bolder;
+  border: black solid;
+  padding: 30px;
+}

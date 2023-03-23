@@ -1,0 +1,15 @@
+.not-found-page-container {
+  background-color: orange;
+}
+
+.not-found-page-container h1 {
+  font-size: 200px;
+  text-align: center;
+  padding: 110px 0px 0px;
+}
+
+.not-found-page-container h2 {
+  font-size: 50px;
+  text-align: center;
+  padding: 50px 0px;
+}
