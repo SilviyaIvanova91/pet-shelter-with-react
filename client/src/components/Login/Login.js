@@ -42,6 +42,7 @@ export const Login = () => {
                 id="login-password"
                 placeholder="Password"
                 name="password"
+                autoComplete="password"
                 value={values.password}
                 onChange={changeHandler}
               />

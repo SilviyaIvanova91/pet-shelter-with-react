@@ -51,6 +51,7 @@ export const Register = () => {
               type="password"
               placeholder="Password"
               name="password"
+              autoComplete="password"
               value={values.password}
               onChange={changeHandler}
             />
@@ -59,6 +60,7 @@ export const Register = () => {
               type="password"
               placeholder="Repeat Password"
               name="rePass"
+              autoComplete="rePass"
               value={values.rePass}
               onChange={changeHandler}
             />
