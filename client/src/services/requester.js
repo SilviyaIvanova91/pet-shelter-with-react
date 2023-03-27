@@ -6,7 +6,7 @@ const requester = async (method, token, url, data) => {
 
     if (data) {
       options.headers = {
-        "Content-Type": "application/json",
+        "content-type": "application/json",
       };
 
       options.body = JSON.stringify(data);
@@ -28,9 +28,9 @@ const requester = async (method, token, url, data) => {
 
   const result = await response.json();
 
-  // if (!response.ok) {
-  //   throw result;
-  // }
+  if (!response.ok) {
+    throw result;
+  }
 
   return result;
 };
@@ -46,10 +46,10 @@ export const requestFactory = (token) => {
   }
 
   return {
-    get: requester.bind({}, "GET", token),
-    post: requester.bind({}, "POST", token),
-    put: requester.bind({}, "PUT", token),
-    del: requester.bind({}, "DELETE", token),
+    get: requester.bind(null, "GET", token),
+    post: requester.bind(null, "POST", token),
+    put: requester.bind(null, "PUT", token),
+    delete: requester.bind(null, "DELETE", token),
   };
 };
 

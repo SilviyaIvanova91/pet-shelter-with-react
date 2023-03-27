@@ -38,9 +38,9 @@ export const AuthProvider = ({ children }) => {
   };
 
   const onLogout = async () => {
-    await authService.logout();
-
+    authService.logout();
     setAuth({});
+    localStorage.clear();
   };
 
   const contextValues = {
