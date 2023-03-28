@@ -21,16 +21,28 @@ export const PetProvider = ({ children }) => {
 
   const onCreatePetSubmit = async (data) => {
     const newPet = await petService.create(data);
-
     setPets((state) => [...state, newPet]);
 
     navigate("/catalog");
+  };
+
+  const onEditPetSubmit = async (pet) => {
+    const result = await petService.edit(pet._id, pet);
+
+    setPets((state) => state.map((x) => (x._id === pet._id ? result : x)));
+    navigate(`/catalog/${pet._id}`);
+  };
+
+  const deletePet = (petId) => {
+    setPets((state) => state.filter((pet) => pet._id !== petId));
   };
 
   const petContextValues = {
     pets,
     onCreatePetSubmit,
     getPet,
+    onEditPetSubmit,
+    deletePet,
   };
 
   return (

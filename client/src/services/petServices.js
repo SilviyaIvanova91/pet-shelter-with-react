@@ -20,15 +20,18 @@ export const petServiceFactory = (token) => {
 
   const create = async (petData) => {
     const result = await request.post(baseUrl, petData);
-
-    console.log(result);
-
     return result;
   };
+
+  const edit = (petId, data) => request.put(`${baseUrl}/${petId}`, data);
+
+  const deletePet = (petId) => request.delete(`${baseUrl}/${petId}`);
 
   return {
     getAll,
     create,
     getOne,
+    edit,
+    deletePet,
   };
 };
