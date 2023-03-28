@@ -24,10 +24,10 @@ function App() {
               <Route path="/" element={<HomePage />} />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
-              <Route path="/catalog" element={<Catalog />} />
               <Route path="/create" element={<CreatePet />} />
-              <Route path="/edit/petId" element={<EditPet />} />
-              <Route path="/details" element={<DetailsPet />} />
+              <Route path="/catalog" element={<Catalog />} />
+              <Route path="/catalog/:petId" element={<DetailsPet />} />
+              <Route path="/catalog/:petId/edit" element={<EditPet />} />
               <Route path="/404" element={<ErrorPage />} />
             </Routes>
           </PetProvider>

@@ -12,6 +12,12 @@ export const petServiceFactory = (token) => {
     return pets;
   };
 
+  const getOne = async (petId) => {
+    const result = await request.get(`${baseUrl}/${petId}`);
+
+    return result;
+  };
+
   const create = async (petData) => {
     const result = await request.post(baseUrl, petData);
 
@@ -23,5 +29,6 @@ export const petServiceFactory = (token) => {
   return {
     getAll,
     create,
+    getOne,
   };
 };

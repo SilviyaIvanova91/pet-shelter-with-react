@@ -9,7 +9,7 @@
 .details {
   display: block;
   position: relative;
-  width: 700px;
+  width: 800px;
   height: 350px;
   border-radius: 20px;
   padding: 40px;
@@ -23,7 +23,7 @@
   float: left;
   height: 100%;
   width: auto;
-  margin-right: 20px;
+  margin-right: 40px;
 }
 
 .pet-img img {

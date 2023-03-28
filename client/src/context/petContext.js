@@ -15,6 +15,10 @@ export const PetProvider = ({ children }) => {
     });
   }, []);
 
+  const getPet = (petId) => {
+    return pets.find((pet) => pet._id === petId);
+  };
+
   const onCreatePetSubmit = async (data) => {
     const newPet = await petService.create(data);
 
@@ -26,6 +30,7 @@ export const PetProvider = ({ children }) => {
   const petContextValues = {
     pets,
     onCreatePetSubmit,
+    getPet,
   };
 
   return (

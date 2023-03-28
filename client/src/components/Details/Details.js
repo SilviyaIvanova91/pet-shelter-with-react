@@ -1,26 +1,41 @@
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
+import { useService } from "../../hooks/useService";
+import { petServiceFactory } from "../../services/petServices";
 import styles from "./Details.Module.css";
 
 export const DetailsPet = () => {
+  const { petId } = useParams();
+  const [pet, setPet] = useState({});
+
+  const petService = useService(petServiceFactory);
+
+  useEffect(() => {
+    petService.getOne(petId).then((result) => {
+      console.log(result);
+      setPet(result);
+    });
+  }, [petId]);
+
   return (
     <section id="detailsPage">
       <div className="details">
         <div className="pet-img">
-          <img src="https://cdn.pixabay.com/photo/2014/10/01/10/44/animal-468228__340.jpg" />
+          <img src={pet.imageUrl} />
         </div>
         <div>
           <div className="pet-info">
-            <h1>Name: Max</h1>
-            <h3>Breed: Shiba Inu</h3>
-            <h4>Age: 2 years</h4>
-            <h4>Location: Sofia</h4>
-            <h4>Description: This is the cutiest pet in the world!</h4>
+            <h1>Name: {pet.name} </h1>
+            <h3>Breed: {pet.breed}</h3>
+            <h4>Age: {pet.age} years</h4>
+            <h4>Location: {pet.location} </h4>
+            <h4>Description: {pet.description} </h4>
           </div>
           <div className="actionBtn">
-            <Link to={`/edit/petId`} className="edit">
+            <Link to={`/catalog/${petId}/edit`} className="edit">
               Edit
             </Link>
-            <Link to={`/delete/petId`} className="remove">
+            <Link to={`/catalog/${petId}/delete`} className="remove">
               Delete
             </Link>
           </div>
