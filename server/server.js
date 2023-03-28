@@ -1198,7 +1198,7 @@
         imageUrl:
           "https://cdn.pixabay.com/photo/2017/09/25/13/12/puppy-2785074__340.jpg",
         name: "Max",
-        breed: "Shiba Inu",
+        breed: "Pom Pom",
         age: "5",
         location: "Veliko Turnovo",
         description: "This is the cutiest pet in the world!",
@@ -1206,8 +1206,8 @@
       "8f414b4f-ab39-4d36-bedb-2ad69da9c830": {
         _ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
         imageUrl: "https://static.toiimg.com/photo/msid-92750074/92750074.jpg",
-        name: "Max",
-        breed: "Pom Pom",
+        name: "Puhi",
+        breed: "Shiba Inu",
         age: "3 ",
         location: "Sofia",
         description: "This is the cutiest pet in the world!",
