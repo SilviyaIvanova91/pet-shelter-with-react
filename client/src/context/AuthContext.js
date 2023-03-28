@@ -7,7 +7,7 @@ export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [auth, setAuth] = useLocalStorage("auth", {});
-  const authService = authServiceFactory(auth.accessToken);
+  const authService = authServiceFactory();
   const navigate = useNavigate();
 
   const onLoginSubmit = async (data) => {
@@ -15,6 +15,7 @@ export const AuthProvider = ({ children }) => {
       const result = await authService.login(data);
 
       setAuth(result);
+
       navigate("/catalog");
     } catch (error) {
       console.log(error);
