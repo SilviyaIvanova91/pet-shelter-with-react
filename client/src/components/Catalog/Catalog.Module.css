@@ -1,6 +1,7 @@
 .catalog-body {
   background-color: #e5dfdfb3;
   margin: 0;
+  padding-bottom: 40px;
 }
 
 .catalog-img {
@@ -23,7 +24,7 @@
   width: 300px;
   text-align: center;
   background: #f3a420fc;
-  margin: 0px 10px;
+  margin: 20px 20px;
   padding: 20px 15px;
   border-radius: 12px;
 }
