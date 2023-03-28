@@ -12,7 +12,6 @@ export const DetailsPet = () => {
 
   useEffect(() => {
     petService.getOne(petId).then((result) => {
-      console.log(result);
       setPet(result);
     });
   }, [petId]);
