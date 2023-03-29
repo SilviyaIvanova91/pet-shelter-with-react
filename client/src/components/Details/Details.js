@@ -8,28 +8,13 @@ import styles from "./Details.Module.css";
 export const DetailsPet = () => {
   const { petId } = useParams();
   const [pet, setPet] = useState({});
-  const { deletePet } = usePetContext();
   const petService = useService(petServiceFactory);
-  const navigate = useNavigate();
 
   useEffect(() => {
     petService.getOne(petId).then((result) => {
       setPet(result);
     });
   }, [petId]);
-
-  const onDeleteClick = async () => {
-    //eslint-disable-next-line no-restricted-globals
-    const result = confirm(`Are you sure you want to delte ${pet.name} `);
-    //showDeleteDialog(true)  -> вместо confirm
-
-    if (result) {
-      await petService.deletePet(pet._id);
-
-      deletePet(pet._id);
-      navigate("/catalog");
-    }
-  };
 
   return (
     <section id="detailsPage">
@@ -49,12 +34,12 @@ export const DetailsPet = () => {
             <Link to={`/catalog/${petId}/edit`} className="edit">
               Edit
             </Link>
-            <Link className="remove" onClick={onDeleteClick}>
-              Delete
-            </Link>
-            {/* <Link to={`/catalog/${petId}/delete`} className="remove">
+            {/* <Link className="remove" onClick={onDeleteClick}>
               Delete
             </Link> */}
+            <Link to={`/catalog/${petId}/delete`} className="remove">
+              Delete
+            </Link>
           </div>
         </div>
       </div>

@@ -12,6 +12,7 @@ import { DetailsPet } from "./components/Details/Details";
 import { ErrorPage } from "./components/ErrorPage/ErrorPage";
 import { AuthProvider } from "./context/AuthContext";
 import { PetProvider } from "./context/petContext";
+import { Delete } from "./components/Delete/Delete";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
               <Route path="/catalog" element={<Catalog />} />
               <Route path="/catalog/:petId" element={<DetailsPet />} />
               <Route path="/catalog/:petId/edit" element={<EditPet />} />
+              <Route path="/catalog/:petId/delete" element={<Delete />} />
               <Route path="/404" element={<ErrorPage />} />
             </Routes>
           </PetProvider>
