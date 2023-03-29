@@ -4,6 +4,8 @@ import { usePetContext } from "../../context/petContext";
 import { useService } from "../../hooks/useService";
 import { petServiceFactory } from "../../services/petServices";
 import styles from "./Details.Module.css";
+import style from "./Comments/Comments.Module.css";
+import { Comments } from "./Comments/Comments";
 
 export const DetailsPet = () => {
   const { petId } = useParams();
@@ -42,6 +44,22 @@ export const DetailsPet = () => {
             </Link>
           </div>
         </div>
+      </div>
+      <div className="details-comments">
+        <h2>Comments:</h2>
+        <ul>
+          {pet.comments &&
+            pet.comments.map((x) => (
+              <li key={x._id} className="comment">
+                <p>
+                  {x.author.email}: {x.comment}
+                </p>
+              </li>
+            ))}
+        </ul>
+
+        {!pet.comments?.length && <p className="no-comment">No comments.</p>}
+        {<Comments />}
       </div>
     </section>
   );
