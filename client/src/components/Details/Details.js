@@ -6,11 +6,13 @@ import { petServiceFactory } from "../../services/petServices";
 import styles from "./Details.Module.css";
 import style from "./Comments/Comments.Module.css";
 import { Comments } from "./Comments/Comments";
+import { useAuthContext } from "../../context/AuthContext";
 
 export const DetailsPet = () => {
   const { petId } = useParams();
   const [pet, setPet] = useState({});
   const petService = useService(petServiceFactory);
+  const { userId, isAuthenticated } = useAuthContext();
 
   useEffect(() => {
     petService.getOne(petId).then((result) => {
@@ -29,6 +31,8 @@ export const DetailsPet = () => {
     }));
   };
 
+  const isOwner = pet._ownerId === userId;
+
   return (
     <section id="detailsPage">
       <div className="details">
@@ -43,17 +47,17 @@ export const DetailsPet = () => {
             <h4>Location: {pet.location} </h4>
             <h4>Description: {pet.description} </h4>
           </div>
-          <div className="actionBtn">
-            <Link to={`/catalog/${petId}/edit`} className="edit">
-              Edit
-            </Link>
-            {/* <Link className="remove" onClick={onDeleteClick}>
-              Delete
-            </Link> */}
-            <Link to={`/catalog/${petId}/delete`} className="remove">
-              Delete
-            </Link>
-          </div>
+          {isOwner && (
+            <div className="actionBtn">
+              <Link to={`/catalog/${petId}/edit`} className="edit">
+                Edit
+              </Link>
+
+              <Link to={`/catalog/${petId}/delete`} className="remove">
+                Delete
+              </Link>
+            </div>
+          )}
         </div>
       </div>
       <div className="details-comments">
@@ -70,7 +74,7 @@ export const DetailsPet = () => {
         </ul>
 
         {!pet.comments?.length && <p className="no-comment">No comments.</p>}
-        {<Comments onCommentSubmit={onCommentSubmit} />}
+        {isAuthenticated && <Comments onCommentSubmit={onCommentSubmit} />}
       </div>
     </section>
   );
