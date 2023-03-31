@@ -17,7 +17,7 @@ export const MyProfile = () => {
   }, []);
 
   return (
-    <>
+    <div className="my-profile">
       <section className="my-profile-container">
         <div className="profile-div-image">
           <img
@@ -47,6 +47,7 @@ export const MyProfile = () => {
           </ul>
         </div>
       </section>
+      <h2 className="my-profile-h">My Pet:</h2>
       <section id="catalog">
         <div className="pets-catalog">
           {pets.map((x) => (
@@ -61,6 +62,6 @@ export const MyProfile = () => {
           )}
         </div>
       </section>
-    </>
+    </div>
   );
 };

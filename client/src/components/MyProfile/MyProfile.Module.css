@@ -43,3 +43,14 @@
   color: orange;
   cursor: pointer;
 }
+
+.my-profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.my-profile-h {
+  font-size: 28px;
+  color: orange;
+}
