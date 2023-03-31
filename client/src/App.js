@@ -15,6 +15,7 @@ import { PetProvider } from "./context/petContext";
 import { Delete } from "./components/Delete/Delete";
 import { RouteGuard } from "./components/common/RouteGuard";
 import { GameOwner } from "./components/common/GameOwner";
+import { MyProfile } from "./components/MyProfile/MyProfile";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <main>
           <PetProvider>
             <Routes>
+              <Route path="/my-profile" element={<MyProfile />} />
               <Route path="/" element={<HomePage />} />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />

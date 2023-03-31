@@ -14,6 +14,13 @@ export const Navigation = () => {
       </Link>
 
       <ul className="navigation">
+        {userId ? (
+          <li>
+            <Link to="/my-profile">My Profile</Link>
+          </li>
+        ) : (
+          ""
+        )}
         <li>
           <Link to="/">Home</Link>
         </li>
