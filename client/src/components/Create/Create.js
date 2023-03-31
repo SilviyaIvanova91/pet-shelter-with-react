@@ -12,6 +12,7 @@ export const CreatePet = () => {
       location: "",
       imageUrl: "",
       description: "",
+      comments: [],
     },
     onCreatePetSubmit
   );

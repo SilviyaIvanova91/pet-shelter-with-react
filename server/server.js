@@ -1202,6 +1202,7 @@
         age: "5",
         location: "Veliko Turnovo",
         description: "This is the cutiest pet in the world!",
+        comments: [],
       },
       "8f414b4f-ab39-4d36-bedb-2ad69da9c830": {
         _ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
@@ -1211,6 +1212,7 @@
         age: "3 ",
         location: "Sofia",
         description: "This is the cutiest pet in the world!",
+        comments: [],
       },
     },
     recipes: {

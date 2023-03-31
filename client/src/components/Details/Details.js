@@ -18,6 +18,17 @@ export const DetailsPet = () => {
     });
   }, [petId]);
 
+  const onCommentSubmit = async (values) => {
+    petService.createComment(petId, values).then((res) => {
+      console.log(res);
+    });
+
+    setPet((state) => ({
+      ...state,
+      comments: [...state.comments, values],
+    }));
+  };
+
   return (
     <section id="detailsPage">
       <div className="details">
@@ -47,19 +58,19 @@ export const DetailsPet = () => {
       </div>
       <div className="details-comments">
         <h2>Comments:</h2>
-        <ul>
+        <ul className="ulComments">
           {pet.comments &&
             pet.comments.map((x) => (
               <li key={x._id} className="comment">
                 <p>
-                  {x.author.email}: {x.comment}
+                  {x.author}: {x.comment}
                 </p>
               </li>
             ))}
         </ul>
 
         {!pet.comments?.length && <p className="no-comment">No comments.</p>}
-        {<Comments />}
+        {<Comments onCommentSubmit={onCommentSubmit} />}
       </div>
     </section>
   );
