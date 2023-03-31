@@ -13,6 +13,8 @@ import { ErrorPage } from "./components/ErrorPage/ErrorPage";
 import { AuthProvider } from "./context/AuthContext";
 import { PetProvider } from "./context/petContext";
 import { Delete } from "./components/Delete/Delete";
+import { RouteGuard } from "./components/common/RouteGuard";
+import { GameOwner } from "./components/common/GameOwner";
 
 function App() {
   return (
@@ -28,9 +30,25 @@ function App() {
               <Route path="/create" element={<CreatePet />} />
               <Route path="/catalog" element={<Catalog />} />
               <Route path="/catalog/:petId" element={<DetailsPet />} />
-              <Route path="/catalog/:petId/edit" element={<EditPet />} />
-              <Route path="/catalog/:petId/delete" element={<Delete />} />
               <Route path="/404" element={<ErrorPage />} />
+              <Route element={<RouteGuard />}>
+                <Route
+                  path="/catalog/:petId/edit"
+                  element={
+                    <GameOwner>
+                      <EditPet />
+                    </GameOwner>
+                  }
+                />
+                <Route
+                  path="/catalog/:petId/delete"
+                  element={
+                    <GameOwner>
+                      <Delete />
+                    </GameOwner>
+                  }
+                />
+              </Route>
             </Routes>
           </PetProvider>
         </main>

@@ -21,10 +21,7 @@ export const DetailsPet = () => {
   }, [petId]);
 
   const onCommentSubmit = async (values) => {
-    petService.createComment(petId, values).then((res) => {
-      console.log(res);
-    });
-
+    petService.createComment(petId, values);
     setPet((state) => ({
       ...state,
       comments: [...state.comments, values],
