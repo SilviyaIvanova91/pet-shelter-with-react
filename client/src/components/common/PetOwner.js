@@ -2,7 +2,7 @@ import { Navigate, Outlet, useParams } from "react-router-dom";
 import { useAuthContext } from "../../context/AuthContext";
 import { usePetContext } from "../../context/petContext";
 
-export const GameOwner = ({ children }) => {
+export const PetOwner = ({ children }) => {
   const { petId } = useParams();
   const { getPet } = usePetContext();
   const { userId } = useAuthContext();

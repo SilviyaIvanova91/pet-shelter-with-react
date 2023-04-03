@@ -32,6 +32,7 @@ export const petServiceFactory = (token) => {
 
     pet.comments.push(commentValues);
     const result = await request.put(`${baseUrl}/${petId}`, pet);
+
     return result;
   };
 

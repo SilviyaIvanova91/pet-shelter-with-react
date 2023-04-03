@@ -13,7 +13,6 @@ export const AuthProvider = ({ children }) => {
   const onLoginSubmit = async (data) => {
     try {
       const result = await authService.login(data);
-
       setAuth(result);
 
       navigate("/catalog");
@@ -53,6 +52,7 @@ export const AuthProvider = ({ children }) => {
     userEmail: auth.email,
     username: auth.username,
     isAuthenticated: !!auth.accessToken,
+    auth,
   };
 
   return (

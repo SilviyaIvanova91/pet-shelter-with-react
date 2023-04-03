@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { useAuthContext } from "../../context/AuthContext";
 import { petServiceFactory } from "../../services/petServices";
 import { CatalogItem } from "../Catalog/CatalogItem";
@@ -16,6 +17,8 @@ export const MyProfile = () => {
     });
   }, []);
 
+  const allMyPets = pets.map((x) => x.name);
+
   return (
     <div className="my-profile">
       <section className="my-profile-container">
@@ -29,20 +32,12 @@ export const MyProfile = () => {
         <div className="my-profile-info">
           <ul className="my-prifile-info-ul">
             <li>
-              <span className="my-profile-span">Username:</span>
-            </li>
-            <li>
               <span className="my-profile-span">Email: </span>
               {userEmail}
             </li>
             <li>
-              <span className="my-profile-span">Phone Number: </span>
-            </li>
-            <li>
-              <span className="my-profile-span">Adress: </span>
-            </li>
-            <li>
-              <button className="my-profile-info-btn">Add Information</button>
+              <span className="my-profile-span">My Pets: </span>
+              {allMyPets.join(", ")}
             </li>
           </ul>
         </div>
@@ -57,7 +52,13 @@ export const MyProfile = () => {
 
           {pets.length === 0 && (
             <div>
-              <p className="no-pets">No pets in dashboard</p>
+              <p className="no-pets">
+                You don't have any pets, yet. You wanna{" "}
+                <Link to="/create" className="my-profile-add">
+                  Add
+                </Link>{" "}
+                ?
+              </p>
             </div>
           )}
         </div>

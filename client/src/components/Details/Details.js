@@ -7,6 +7,7 @@ import styles from "./Details.Module.css";
 import style from "./Comments/Comments.Module.css";
 import { Comments } from "./Comments/Comments";
 import { useAuthContext } from "../../context/AuthContext";
+import { PetOwner } from "../common/PetOwner";
 
 export const DetailsPet = () => {
   const { petId } = useParams();

@@ -16,7 +16,7 @@ export const Navigation = () => {
       <ul className="navigation">
         {userId ? (
           <li>
-            <Link to="/my-profile">My Profile</Link>
+            <Link to={`/my-profile/${userId}`}>My Profile</Link>
           </li>
         ) : (
           ""

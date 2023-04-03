@@ -24,6 +24,10 @@
   padding: 4px;
 }
 
+.my-profile-info li a {
+  text-decoration: none;
+}
+
 .my-profile-span {
   font-size: 18px;
   font-weight: bold;
@@ -52,5 +56,10 @@
 
 .my-profile-h {
   font-size: 28px;
+  color: orange;
+}
+
+.my-profile-add {
+  text-decoration: none;
   color: orange;
 }

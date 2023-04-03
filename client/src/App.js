@@ -14,8 +14,8 @@ import { AuthProvider } from "./context/AuthContext";
 import { PetProvider } from "./context/petContext";
 import { Delete } from "./components/Delete/Delete";
 import { RouteGuard } from "./components/common/RouteGuard";
-import { GameOwner } from "./components/common/GameOwner";
 import { MyProfile } from "./components/MyProfile/MyProfile";
+import { PetOwner } from "./components/common/PetOwner";
 
 function App() {
   return (
@@ -25,7 +25,6 @@ function App() {
         <main>
           <PetProvider>
             <Routes>
-              <Route path="/my-profile" element={<MyProfile />} />
               <Route path="/" element={<HomePage />} />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
@@ -34,20 +33,14 @@ function App() {
               <Route path="/catalog/:petId" element={<DetailsPet />} />
               <Route path="/404" element={<ErrorPage />} />
               <Route element={<RouteGuard />}>
-                <Route
-                  path="/catalog/:petId/edit"
-                  element={
-                    <GameOwner>
-                      <EditPet />
-                    </GameOwner>
-                  }
-                />
+                <Route path="/my-profile/:userId" element={<MyProfile />} />
+                <Route path="/catalog/:petId/edit" element={<EditPet />} />
                 <Route
                   path="/catalog/:petId/delete"
                   element={
-                    <GameOwner>
+                    <PetOwner>
                       <Delete />
-                    </GameOwner>
+                    </PetOwner>
                   }
                 />
               </Route>
