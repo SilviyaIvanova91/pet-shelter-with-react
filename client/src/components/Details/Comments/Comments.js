@@ -1,14 +1,9 @@
-import { useAuthContext } from "../../../context/AuthContext";
 import { useForm } from "../../../hooks/useForm";
 import style from "./Comments.Module.css";
 
 export const Comments = ({ onCommentSubmit }) => {
-  const { userEmail } = useAuthContext();
-
   const { values, changeHandler, onSubmit } = useForm(
     {
-      _id: new Date(),
-      author: userEmail,
       comment: "",
     },
     onCommentSubmit

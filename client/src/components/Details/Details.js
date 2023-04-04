@@ -1,31 +1,45 @@
 import { useEffect, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
-import { usePetContext } from "../../context/petContext";
+import { Link, useParams } from "react-router-dom";
 import { useService } from "../../hooks/useService";
 import { petServiceFactory } from "../../services/petServices";
 import styles from "./Details.Module.css";
 import style from "./Comments/Comments.Module.css";
 import { Comments } from "./Comments/Comments";
 import { useAuthContext } from "../../context/AuthContext";
-import { PetOwner } from "../common/PetOwner";
+import * as commentService from "../../services/commentService";
 
 export const DetailsPet = () => {
   const { petId } = useParams();
   const [pet, setPet] = useState({});
   const petService = useService(petServiceFactory);
-  const { userId, isAuthenticated } = useAuthContext();
+  const { userId, isAuthenticated, userEmail } = useAuthContext();
 
   useEffect(() => {
-    petService.getOne(petId).then((result) => {
-      setPet(result);
-    });
+    Promise.all([petService.getOne(petId), commentService.getAll(petId)]).then(
+      ([petData, comments]) => {
+        const petState = {
+          ...petData,
+          comments,
+        };
+        setPet(petState);
+      }
+    );
   }, [petId]);
 
   const onCommentSubmit = async (values) => {
-    petService.createComment(petId, values);
+    const response = await commentService.create(petId, values.comment);
+
     setPet((state) => ({
       ...state,
-      comments: [...state.comments, values],
+      comments: [
+        ...state.comments,
+        {
+          ...response,
+          author: {
+            email: userEmail,
+          },
+        },
+      ],
     }));
   };
 
@@ -65,7 +79,7 @@ export const DetailsPet = () => {
             pet.comments.map((x) => (
               <li key={x._id} className="comment">
                 <p>
-                  {x.author}: {x.comment}
+                  {x.author.email}: {x.comment}
                 </p>
               </li>
             ))}

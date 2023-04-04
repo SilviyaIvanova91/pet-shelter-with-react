@@ -27,14 +27,14 @@ export const petServiceFactory = (token) => {
 
   const deletePet = (petId) => request.delete(`${baseUrl}/${petId}`);
 
-  const createComment = async (petId, commentValues) => {
-    const pet = await request.get(`${baseUrl}/${petId}`);
+  // const createComment = async (petId, commentValues) => {
+  //   const pet = await request.get(`${baseUrl}/${petId}`);
 
-    pet.comments.push(commentValues);
-    const result = await request.put(`${baseUrl}/${petId}`, pet);
+  //   pet.comments.push(commentValues);
+  //   const result = await request.put(`${baseUrl}/${petId}`, pet);
 
-    return result;
-  };
+  //   return result;
+  // };
 
   return {
     getAll,
@@ -42,6 +42,6 @@ export const petServiceFactory = (token) => {
     getOne,
     edit,
     deletePet,
-    createComment,
+    // createComment,
   };
 };

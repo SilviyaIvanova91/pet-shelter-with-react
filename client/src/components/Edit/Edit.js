@@ -4,7 +4,6 @@ import { usePetContext } from "../../context/petContext";
 import { useForm } from "../../hooks/useForm";
 import { useService } from "../../hooks/useService";
 import { petServiceFactory } from "../../services/petServices";
-import { GameOwner } from "../common/PetOwner";
 import style from "./Edit.Module.css";
 
 export const EditPet = () => {

@@ -8,7 +8,6 @@ export const PetProvider = ({ children }) => {
   const navigate = useNavigate();
   const [pets, setPets] = useState([]);
   const petService = petServiceFactory();
-  const [profile, setProfile] = useState([]);
 
   useEffect(() => {
     petService.getAll().then((result) => {

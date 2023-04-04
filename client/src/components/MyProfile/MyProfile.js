@@ -37,6 +37,7 @@ export const MyProfile = () => {
             </li>
             <li>
               <span className="my-profile-span">My Pets: </span>
+              {allMyPets.length === 0 && `You don't have pets yet.`}
               {allMyPets.join(", ")}
             </li>
           </ul>

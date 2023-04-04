@@ -34,7 +34,14 @@ function App() {
               <Route path="/404" element={<ErrorPage />} />
               <Route element={<RouteGuard />}>
                 <Route path="/my-profile/:userId" element={<MyProfile />} />
-                <Route path="/catalog/:petId/edit" element={<EditPet />} />
+                <Route
+                  path="/catalog/:petId/edit"
+                  element={
+                    <PetOwner>
+                      <EditPet />
+                    </PetOwner>
+                  }
+                />
                 <Route
                   path="/catalog/:petId/delete"
                   element={
