@@ -91,6 +91,12 @@
   background-color: #e29508;
 }
 
+.add-btn:disabled,
+.add-btn[disabled] {
+  background-color: gray;
+  color: #d7d0d033;
+}
+
 .edit-delete button:hover {
   box-shadow: none;
 }

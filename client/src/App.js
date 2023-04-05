@@ -16,6 +16,7 @@ import { Delete } from "./components/Delete/Delete";
 import { RouteGuard } from "./components/common/RouteGuard";
 import { MyProfile } from "./components/MyProfile/MyProfile";
 import { PetOwner } from "./components/common/PetOwner";
+import { ErrorProvider } from "./context/ErroroContext";
 
 function App() {
   return (
@@ -24,34 +25,36 @@ function App() {
         <Navigation />
         <main>
           <PetProvider>
-            <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/register" element={<Register />} />
-              <Route path="/create" element={<CreatePet />} />
-              <Route path="/catalog" element={<Catalog />} />
-              <Route path="/catalog/:petId" element={<DetailsPet />} />
-              <Route path="/404" element={<ErrorPage />} />
-              <Route element={<RouteGuard />}>
-                <Route path="/my-profile/:userId" element={<MyProfile />} />
-                <Route
-                  path="/catalog/:petId/edit"
-                  element={
-                    <PetOwner>
-                      <EditPet />
-                    </PetOwner>
-                  }
-                />
-                <Route
-                  path="/catalog/:petId/delete"
-                  element={
-                    <PetOwner>
-                      <Delete />
-                    </PetOwner>
-                  }
-                />
-              </Route>
-            </Routes>
+            <ErrorProvider>
+              <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/register" element={<Register />} />
+                <Route path="/create" element={<CreatePet />} />
+                <Route path="/catalog" element={<Catalog />} />
+                <Route path="/catalog/:petId" element={<DetailsPet />} />
+                <Route path="/404" element={<ErrorPage />} />
+                <Route element={<RouteGuard />}>
+                  <Route path="/my-profile/:userId" element={<MyProfile />} />
+                  <Route
+                    path="/catalog/:petId/edit"
+                    element={
+                      <PetOwner>
+                        <EditPet />
+                      </PetOwner>
+                    }
+                  />
+                  <Route
+                    path="/catalog/:petId/delete"
+                    element={
+                      <PetOwner>
+                        <Delete />
+                      </PetOwner>
+                    }
+                  />
+                </Route>
+              </Routes>
+            </ErrorProvider>
           </PetProvider>
         </main>
         <Footer />

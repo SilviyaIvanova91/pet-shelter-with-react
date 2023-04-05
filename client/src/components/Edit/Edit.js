@@ -5,10 +5,13 @@ import { useForm } from "../../hooks/useForm";
 import { useService } from "../../hooks/useService";
 import { petServiceFactory } from "../../services/petServices";
 import style from "./Edit.Module.css";
+import { useErrorContext } from "../../context/ErroroContext";
 
 export const EditPet = () => {
   const { petId } = useParams();
   const { onEditPetSubmit } = usePetContext();
+  const { errors, minLength, isPositive, isFormValid } = useErrorContext();
+
   const petSercise = useService(petServiceFactory);
   const { values, changeHandler, onSubmit, changeValues } = useForm(
     {
@@ -39,8 +42,14 @@ export const EditPet = () => {
             placeholder="Name"
             value={values.name}
             onChange={changeHandler}
+            onBlur={(e) => minLength(e, 4, values.name)}
           />
         </p>
+        {errors.name && (
+          <p className="edit-error">
+            Name should be at least 4 characters long!
+          </p>
+        )}
         <p>
           <input
             type="text"
@@ -48,8 +57,14 @@ export const EditPet = () => {
             placeholder="Breed"
             value={values.breed}
             onChange={changeHandler}
+            onBlur={(e) => minLength(e, 4, values.breed)}
           />
         </p>
+        {errors.breed && (
+          <p className="edit-error">
+            Breed should be at least 4 characters long!
+          </p>
+        )}
         <p>
           <input
             type="number"
@@ -57,8 +72,12 @@ export const EditPet = () => {
             placeholder="Age"
             value={values.age}
             onChange={changeHandler}
+            onBlur={isPositive}
           />
         </p>
+        {errors.age && (
+          <p className="edit-error">Age should be a positive number!</p>
+        )}
         <p>
           <input
             type="text"
@@ -66,8 +85,14 @@ export const EditPet = () => {
             placeholder="Location"
             value={values.location}
             onChange={changeHandler}
+            onBlur={(e) => minLength(e, 4, values.location)}
           />
         </p>
+        {errors.location && (
+          <p className="edit-error">
+            Location should be at least 4 characters long!
+          </p>
+        )}
         <p>
           <input
             type="text"
@@ -75,8 +100,10 @@ export const EditPet = () => {
             placeholder="Link to image"
             value={values.imageUrl}
             onChange={changeHandler}
+            onBlur={(e) => minLength(e, 1, values.imageUrl)}
           />
         </p>
+        {errors.imageUrl && <p className="edit-error">Image is required!</p>}
         <p>
           <textarea
             type="text"
@@ -84,9 +111,15 @@ export const EditPet = () => {
             placeholder="Description"
             value={values.description}
             onChange={changeHandler}
+            onBlur={(e) => minLength(e, 5, values.description)}
           />
         </p>
-        <button className="add-btn" type="submit">
+        {errors.description && (
+          <p className="edit-error">
+            Description should be at least 5 characters long!
+          </p>
+        )}
+        <button className="add-btn" type="submit" disabled={!isFormValid}>
           Edit Pet
         </button>
       </form>

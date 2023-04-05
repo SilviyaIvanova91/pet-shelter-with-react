@@ -2,10 +2,11 @@ import { useState } from "react";
 import { usePetContext } from "../../context/petContext";
 import { useForm } from "../../hooks/useForm";
 import style from "./Create.Module.css";
+import { useErrorContext } from "../../context/ErroroContext";
 
 export const CreatePet = () => {
   const { onCreatePetSubmit } = usePetContext();
-  const [errors, setErrors] = useState({});
+  const { errors, minLength, isPositive, isFormValid } = useErrorContext();
   const { values, changeHandler, onSubmit } = useForm(
     {
       name: "",
@@ -18,22 +19,6 @@ export const CreatePet = () => {
     onCreatePetSubmit
   );
 
-  const minLength = (e, bound) => {
-    setErrors((state) => ({
-      ...state,
-      [e.target.name]: values[e.target.name].length < bound,
-    }));
-  };
-  const isPositive = (e) => {
-    let number = Number(e.target.value);
-
-    setErrors((state) => ({
-      ...state,
-      [e.target.name]: number < 0,
-    }));
-  };
-  const isFormValid = !Object.values(errors).some((x) => x);
-
   return (
     <div className="createPage">
       <form className="create-form" onSubmit={onSubmit}>
@@ -45,7 +30,7 @@ export const CreatePet = () => {
             placeholder="Name"
             value={values.name}
             onChange={changeHandler}
-            onBlur={(e) => minLength(e, 4)}
+            onBlur={(e) => minLength(e, 4, values.name)}
           />
         </p>
         {errors.name && (
@@ -60,7 +45,7 @@ export const CreatePet = () => {
             placeholder="Breed"
             value={values.breed}
             onChange={changeHandler}
-            onBlur={(e) => minLength(e, 4)}
+            onBlur={(e) => minLength(e, 4, values.breed)}
           />
         </p>
         {errors.breed && (
@@ -88,7 +73,7 @@ export const CreatePet = () => {
             placeholder="Location"
             value={values.location}
             onChange={changeHandler}
-            onBlur={(e) => minLength(e, 4)}
+            onBlur={(e) => minLength(e, 4, values.location)}
           />
         </p>
         {errors.location && (
@@ -103,7 +88,7 @@ export const CreatePet = () => {
             placeholder="Link to image"
             value={values.imageUrl}
             onChange={changeHandler}
-            onBlur={(e) => minLength(e, 1)}
+            onBlur={(e) => minLength(e, 1, values.imageUrl)}
           />
         </p>
         {errors.imageUrl && <p className="create-error">Image is required!</p>}
@@ -114,7 +99,7 @@ export const CreatePet = () => {
             placeholder="Description"
             value={values.description}
             onChange={changeHandler}
-            onBlur={(e) => minLength(e, 5)}
+            onBlur={(e) => minLength(e, 5, values.description)}
           />
         </p>
         {errors.description && (

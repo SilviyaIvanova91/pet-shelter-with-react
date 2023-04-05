@@ -1209,7 +1209,7 @@
         imageUrl: "https://static.toiimg.com/photo/msid-92750074/92750074.jpg",
         name: "Puhi",
         breed: "Shiba Inu",
-        age: "3 ",
+        age: "3",
         location: "Sofia",
         description: "This is the cutiest pet in the world!",
         comments: [],
