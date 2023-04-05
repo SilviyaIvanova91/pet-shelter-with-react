@@ -72,6 +72,13 @@ a {
   cursor: pointer;
   margin-top: 15px;
 }
+
+.login-button:disabled,
+.login-button[disabled] {
+  background-color: gray;
+  color: #d7d0d033;
+}
+
 .sign-up-p {
   color: #efeaea;
 }
@@ -106,4 +113,11 @@ a {
   .login-button {
     margin-bottom: 10px;
   }
+}
+
+.login-error {
+  margin: 0px;
+  color: red;
+  font-size: 16px;
+  font-weight: bold;
 }

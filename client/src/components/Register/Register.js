@@ -3,9 +3,12 @@ import { Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { useForm } from "../../hooks/useForm";
+import { useErrorContext } from "../../context/ErroroContext";
 
 export const Register = () => {
   const { onRegisterSubmit } = useContext(AuthContext);
+  const { errors, minLength, isFormValid, validateEmail } = useErrorContext();
+
   const { values, changeHandler, onSubmit } = useForm(
     {
       email: "",
@@ -34,7 +37,11 @@ export const Register = () => {
               name="email"
               value={values.email}
               onChange={changeHandler}
+              onBlur={(e) => validateEmail(e, values.email)}
             />
+            {errors.email && (
+              <p className="register-error">Enter a valid Email!</p>
+            )}
             <br />
             <h3>Password:</h3>
             <input
@@ -44,8 +51,15 @@ export const Register = () => {
               autoComplete="password"
               value={values.password}
               onChange={changeHandler}
+              onBlur={(e) => minLength(e, 3, values.password)}
             />
-            <br /> <h3>Repeat Password:</h3>
+            {errors.password && (
+              <p className="register-error">
+                Password should be at least 3 characters long!
+              </p>
+            )}
+            <br />
+            <h3>Repeat Password:</h3>
             <input
               type="password"
               placeholder="Repeat Password"
@@ -59,6 +73,7 @@ export const Register = () => {
               type="submit"
               defaultValue="Register"
               className="register-button"
+              disabled={!isFormValid}
             />
             <br />
             <p className="sign-in-p">

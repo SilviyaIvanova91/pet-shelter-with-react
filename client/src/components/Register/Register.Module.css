@@ -70,6 +70,13 @@ a {
   cursor: pointer;
   margin-top: 15px;
 }
+
+.register-button:disabled,
+.register-button[disabled] {
+  background-color: gray;
+  color: #d7d0d033;
+}
+
 .sign-in-p {
   color: #efeaea;
 }
@@ -104,4 +111,11 @@ a {
   .register-button {
     margin-bottom: 10px;
   }
+}
+
+.register-error {
+  margin: 0px;
+  color: red;
+  font-size: 16px;
+  font-weight: bold;
 }

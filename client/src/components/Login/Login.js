@@ -2,9 +2,11 @@ import styles from "./Login.Module.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuthContext } from "../../context/AuthContext";
 import { useForm } from "../../hooks/useForm";
+import { useErrorContext } from "../../context/ErroroContext";
 
 export const Login = () => {
   const { onLoginSubmit } = useAuthContext();
+  const { errors, minLength, isFormValid, validateEmail } = useErrorContext();
 
   const { values, changeHandler, onSubmit } = useForm(
     {
@@ -35,7 +37,11 @@ export const Login = () => {
                 name="email"
                 value={values.email}
                 onChange={changeHandler}
+                onBlur={(e) => validateEmail(e, values.email)}
               />
+              {errors.email && (
+                <p className="login-error">Enter a valid Email!</p>
+              )}
               <br />
               <h3>Password:</h3>
               <input
@@ -46,12 +52,19 @@ export const Login = () => {
                 autoComplete="password"
                 value={values.password}
                 onChange={changeHandler}
+                onBlur={(e) => minLength(e, 3, values.password)}
               />
+              {errors.password && (
+                <p className="login-error">
+                  Password should be at least 3 characters long!
+                </p>
+              )}
               <br />
               <input
                 type="submit"
                 defaultValue="Login"
                 className="login-button"
+                disabled={!isFormValid}
               />
               <br />
               <p className="sign-up-p">

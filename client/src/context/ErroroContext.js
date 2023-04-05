@@ -22,7 +22,14 @@ export const ErrorProvider = ({ children }) => {
 
   const validateImage = (e, values) => {
     const regEx = /^https?.\/\//;
-    console.log(values.match(regEx));
+    setErrors((state) => ({
+      ...state,
+      [e.target.name]: values.match(regEx) === null,
+    }));
+  };
+
+  const validateEmail = (e, values) => {
+    const regEx = /^[A-Za-z0-9]{3,}@[A-Za-z0-9]{3,}.[A-Za-z]{2,}$/;
     setErrors((state) => ({
       ...state,
       [e.target.name]: values.match(regEx) === null,
@@ -37,6 +44,7 @@ export const ErrorProvider = ({ children }) => {
     isPositive,
     isFormValid,
     validateImage,
+    validateEmail,
   };
 
   return (
