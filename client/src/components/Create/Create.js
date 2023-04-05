@@ -6,7 +6,8 @@ import { useErrorContext } from "../../context/ErroroContext";
 
 export const CreatePet = () => {
   const { onCreatePetSubmit } = usePetContext();
-  const { errors, minLength, isPositive, isFormValid } = useErrorContext();
+  const { errors, minLength, isPositive, isFormValid, validateImage } =
+    useErrorContext();
   const { values, changeHandler, onSubmit } = useForm(
     {
       name: "",
@@ -88,10 +89,12 @@ export const CreatePet = () => {
             placeholder="Link to image"
             value={values.imageUrl}
             onChange={changeHandler}
-            onBlur={(e) => minLength(e, 1, values.imageUrl)}
+            onBlur={(e) => validateImage(e, values.imageUrl)}
           />
         </p>
-        {errors.imageUrl && <p className="create-error">Image is required!</p>}
+        {errors.imageUrl && (
+          <p className="create-error">Image must be a valid URL!</p>
+        )}
         <p>
           <textarea
             type="text"
@@ -107,6 +110,7 @@ export const CreatePet = () => {
             Description should be at least 5 characters long!
           </p>
         )}
+
         <button className="add-btn" type="submit" disabled={!isFormValid}>
           Add Pet
         </button>

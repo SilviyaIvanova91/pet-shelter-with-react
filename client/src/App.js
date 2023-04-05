@@ -17,15 +17,16 @@ import { RouteGuard } from "./components/common/RouteGuard";
 import { MyProfile } from "./components/MyProfile/MyProfile";
 import { PetOwner } from "./components/common/PetOwner";
 import { ErrorProvider } from "./context/ErroroContext";
+import { ServerError } from "./components/ErrorPage/ServerError/ServerError";
 
 function App() {
   return (
     <>
-      <AuthProvider>
-        <Navigation />
-        <main>
-          <PetProvider>
-            <ErrorProvider>
+      <ErrorProvider>
+        <AuthProvider>
+          <Navigation />
+          <main>
+            <PetProvider>
               <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/login" element={<Login />} />
@@ -34,6 +35,7 @@ function App() {
                 <Route path="/catalog" element={<Catalog />} />
                 <Route path="/catalog/:petId" element={<DetailsPet />} />
                 <Route path="/404" element={<ErrorPage />} />
+                <Route path="/server-error" element={<ServerError />} />
                 <Route element={<RouteGuard />}>
                   <Route path="/my-profile/:userId" element={<MyProfile />} />
                   <Route
@@ -54,11 +56,11 @@ function App() {
                   />
                 </Route>
               </Routes>
-            </ErrorProvider>
-          </PetProvider>
-        </main>
-        <Footer />
-      </AuthProvider>
+            </PetProvider>
+          </main>
+          <Footer />
+        </AuthProvider>
+      </ErrorProvider>
     </>
   );
 }

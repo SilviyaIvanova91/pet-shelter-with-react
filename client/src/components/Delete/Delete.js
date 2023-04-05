@@ -27,7 +27,7 @@ export const Delete = () => {
   };
 
   const closeHandler = () => {
-    setPetAction(navigate(`/catalog/${petId}`));
+    setPetAction(navigate(-1));
   };
 
   return (

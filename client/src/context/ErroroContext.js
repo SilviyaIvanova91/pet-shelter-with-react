@@ -20,6 +20,15 @@ export const ErrorProvider = ({ children }) => {
     }));
   };
 
+  const validateImage = (e, values) => {
+    const regEx = /^https?.\/\//;
+    console.log(values.match(regEx));
+    setErrors((state) => ({
+      ...state,
+      [e.target.name]: values.match(regEx) === null,
+    }));
+  };
+
   const isFormValid = !Object.values(errors).some((x) => x);
 
   const contextValues = {
@@ -27,6 +36,7 @@ export const ErrorProvider = ({ children }) => {
     minLength,
     isPositive,
     isFormValid,
+    validateImage,
   };
 
   return (

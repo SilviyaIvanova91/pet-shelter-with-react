@@ -10,7 +10,8 @@ import { useErrorContext } from "../../context/ErroroContext";
 export const EditPet = () => {
   const { petId } = useParams();
   const { onEditPetSubmit } = usePetContext();
-  const { errors, minLength, isPositive, isFormValid } = useErrorContext();
+  const { errors, minLength, isPositive, isFormValid, validateImage } =
+    useErrorContext();
 
   const petSercise = useService(petServiceFactory);
   const { values, changeHandler, onSubmit, changeValues } = useForm(
@@ -100,10 +101,12 @@ export const EditPet = () => {
             placeholder="Link to image"
             value={values.imageUrl}
             onChange={changeHandler}
-            onBlur={(e) => minLength(e, 1, values.imageUrl)}
+            onBlur={(e) => validateImage(e, values.imageUrl)}
           />
         </p>
-        {errors.imageUrl && <p className="edit-error">Image is required!</p>}
+        {errors.imageUrl && (
+          <p className="edit-error">Image must be a valid URL!</p>
+        )}
         <p>
           <textarea
             type="text"

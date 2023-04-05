@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { petServiceFactory } from "../services/petServices";
+import { useErrorContext } from "./ErroroContext";
 
 export const PetContext = createContext();
 
@@ -8,7 +9,6 @@ export const PetProvider = ({ children }) => {
   const navigate = useNavigate();
   const [pets, setPets] = useState([]);
   const petService = petServiceFactory();
-  const [errors, setErrors] = useState({});
 
   useEffect(() => {
     petService.getAll().then((result) => {
@@ -30,7 +30,10 @@ export const PetProvider = ({ children }) => {
       imageUrl === "" ||
       description === ""
     ) {
-      throw new Error("All fields are required!");
+      const msg = "All fields are required!";
+
+      navigate("/server-error", { state: { msg } });
+      return;
     }
 
     const newPet = await petService.create(data);
@@ -41,7 +44,6 @@ export const PetProvider = ({ children }) => {
 
   const onEditPetSubmit = async (pet) => {
     const result = await petService.edit(pet._id, pet);
-    console.log(result);
     const { name, breed, age, location, imageUrl, description } = result;
     if (
       name === "" ||
@@ -51,7 +53,9 @@ export const PetProvider = ({ children }) => {
       imageUrl === "" ||
       description === ""
     ) {
-      throw new Error("All fields are required!");
+      const msg = "All fields are required!";
+      navigate("/server-error", { state: { msg } });
+      return;
     }
 
     setPets((state) => state.map((x) => (x._id === pet._id ? result : x)));

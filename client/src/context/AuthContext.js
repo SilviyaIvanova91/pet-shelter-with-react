@@ -11,20 +11,36 @@ export const AuthProvider = ({ children }) => {
   const navigate = useNavigate();
 
   const onLoginSubmit = async (data) => {
+    const { email, password } = data;
+    if (email === "" || password === "") {
+      const msg = "All fields are required!";
+      navigate("/server-error", { state: { msg } });
+      return;
+    }
+
     try {
       const result = await authService.login(data);
       setAuth(result);
 
       navigate("/catalog");
     } catch (error) {
-      console.log(error);
+      navigate("/server-error", { state: { error } });
+      return;
     }
   };
 
   const onRegisterSubmit = async (values) => {
     const { rePass, ...data } = values;
+
+    if (data.email === "" || data.password === "" || rePass === "") {
+      const msg = "All fields are required!";
+      navigate("/server-error", { state: { msg } });
+      return;
+    }
     if (rePass !== data.password) {
-      throw new Error("Passwords dont match");
+      const msg = "Passwords dont match";
+      navigate("/server-error", { state: { msg } });
+      return;
     }
 
     try {
@@ -33,7 +49,8 @@ export const AuthProvider = ({ children }) => {
 
       navigate("/catalog");
     } catch (error) {
-      console.log(error);
+      navigate("/server-error", { state: { error } });
+      return;
     }
   };
 
