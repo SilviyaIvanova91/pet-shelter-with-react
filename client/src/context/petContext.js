@@ -8,6 +8,7 @@ export const PetProvider = ({ children }) => {
   const navigate = useNavigate();
   const [pets, setPets] = useState([]);
   const petService = petServiceFactory();
+  const [errors, setErrors] = useState({});
 
   useEffect(() => {
     petService.getAll().then((result) => {
@@ -20,6 +21,18 @@ export const PetProvider = ({ children }) => {
   };
 
   const onCreatePetSubmit = async (data) => {
+    const { name, breed, age, location, imageUrl, description } = data;
+    if (
+      name === "" ||
+      breed === "" ||
+      age === "" ||
+      location === "" ||
+      imageUrl === "" ||
+      description === ""
+    ) {
+      throw new Error("All fields are required!");
+    }
+
     const newPet = await petService.create(data);
     setPets((state) => [...state, newPet]);
 
@@ -28,6 +41,18 @@ export const PetProvider = ({ children }) => {
 
   const onEditPetSubmit = async (pet) => {
     const result = await petService.edit(pet._id, pet);
+    console.log(result);
+    const { name, breed, age, location, imageUrl, description } = result;
+    if (
+      name === "" ||
+      breed === "" ||
+      age === "" ||
+      location === "" ||
+      imageUrl === "" ||
+      description === ""
+    ) {
+      throw new Error("All fields are required!");
+    }
 
     setPets((state) => state.map((x) => (x._id === pet._id ? result : x)));
     navigate(`/catalog/${pet._id}`);
