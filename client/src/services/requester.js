@@ -1,44 +1,49 @@
 const requester = async (method, url, data) => {
   const options = {};
+  try {
+    if (method !== "GET") {
+      options.method = method;
 
-  if (method !== "GET") {
-    options.method = method;
+      if (data) {
+        options.headers = {
+          "content-type": "application/json",
+        };
 
-    if (data) {
-      options.headers = {
-        "content-type": "application/json",
-      };
-
-      options.body = JSON.stringify(data);
+        options.body = JSON.stringify(data);
+      }
     }
-  }
 
-  const serializedAuth = localStorage.getItem("auth");
+    const serializedAuth = localStorage.getItem("auth");
 
-  if (serializedAuth) {
-    const auth = JSON.parse(serializedAuth);
+    if (serializedAuth) {
+      const auth = JSON.parse(serializedAuth);
 
-    if (auth.accessToken) {
-      options.headers = {
-        ...options.headers,
-        "X-Authorization": auth.accessToken,
-      };
+      if (auth.accessToken) {
+        options.headers = {
+          ...options.headers,
+          "X-Authorization": auth.accessToken,
+        };
+      }
     }
+
+    const response = await fetch(url, options);
+
+    if (response.status === 204) {
+      return {};
+    }
+
+    const result = await response.json();
+
+    if (!response.ok) {
+      throw result;
+    }
+
+    return result;
+  } catch (error) {
+    const msg = error.message;
+    alert(msg);
+    return;
   }
-
-  const response = await fetch(url, options);
-
-  if (response.status === 204) {
-    return {};
-  }
-
-  const result = await response.json();
-
-  if (!response.ok) {
-    throw result;
-  }
-
-  return result;
 };
 
 export const requestFactory = () => {

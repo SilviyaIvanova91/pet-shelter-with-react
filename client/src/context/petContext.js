@@ -18,7 +18,7 @@ export const PetProvider = ({ children }) => {
 
   const getPet = (petId) => {
     const pet = pets.find((pet) => pet._id === petId);
-
+    console.log(pet);
     return pet;
   };
 
