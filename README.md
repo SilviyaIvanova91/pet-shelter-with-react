@@ -16,13 +16,13 @@ Here you can add different animals looking for their new home and also find your
   - [react-router-dom](https://www.npmjs.com/package/react-bootstrap "react-router-dom")
 
 ---
-### You can run server :
-- cd server
-- node server.js
-### You can run client
-- cd client
-- npm install
-- npm start
+- You can run server :
+  - cd server
+  - node server.js
+- You can run client
+  - cd client
+  - npm install
+  - npm start
     
 ---
 
