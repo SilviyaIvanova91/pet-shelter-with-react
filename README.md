@@ -1,5 +1,5 @@
 <h1> Pet Shelter Project with React </h1>
----
+
 
 This is my project for the course ReactJs in SoftUni.
 Here you can add different animals looking for their new home and also find your new friend!
@@ -16,10 +16,10 @@ Here you can add different animals looking for their new home and also find your
   - [react-router-dom](https://www.npmjs.com/package/react-bootstrap "react-router-dom")
 
 ---
---> You can run server :
+- You can run server :
     cd server
     node server.js
---> You can run client
+- You can run client
     cd client
     npm install
     npm start
@@ -27,5 +27,5 @@ Here you can add different animals looking for their new home and also find your
 ---
 
 <h3> Preview: </h3>
-## Home Page
+### Home Page
 ![home-page](https://raw.githubusercontent.com/SilviyaIvanova91/pet-shelter-with-react/master/screenshots/homePage.jpg)
