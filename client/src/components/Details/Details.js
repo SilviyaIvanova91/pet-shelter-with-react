@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useService } from "../../hooks/useService";
 import { petServiceFactory } from "../../services/petServices";
 import styles from "./Details.Module.css";

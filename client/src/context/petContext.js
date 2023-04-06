@@ -17,7 +17,9 @@ export const PetProvider = ({ children }) => {
   }, []);
 
   const getPet = (petId) => {
-    return pets.find((pet) => pet._id === petId);
+    const pet = pets.find((pet) => pet._id === petId);
+
+    return pet;
   };
 
   const onCreatePetSubmit = async (data) => {
