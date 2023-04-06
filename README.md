@@ -17,8 +17,8 @@ Here you can add different animals looking for their new home and also find your
 
 ---
 - You can run server :
-    cd server
-    node server.js
+-> cd server
+-> node server.js
 - You can run client
     cd client
     npm install
