@@ -26,7 +26,31 @@ Here you can add different animals looking for their new home and also find your
     
 ---
 
-<h3> Preview: </h3>
+<h2> Preview: </h2>
 
 ### Home Page
 ![Home](https://raw.githubusercontent.com/SilviyaIvanova91/pet-shelter-with-react/master/screenshots/homePage.jpg)
+
+### Login Page
+![Login](https://raw.githubusercontent.com/SilviyaIvanova91/pet-shelter-with-react/master/screenshots/loginPage.jpg)
+
+### Register Page
+![Register](https://raw.githubusercontent.com/SilviyaIvanova91/pet-shelter-with-react/master/screenshots/registerPage.jpg)
+
+### Create Page
+![Create](https://raw.githubusercontent.com/SilviyaIvanova91/pet-shelter-with-react/master/screenshots/createPage.jpg)
+
+### Catalog Page
+![Catalog](https://raw.githubusercontent.com/SilviyaIvanova91/pet-shelter-with-react/master/screenshots/catalogPage.jpg)
+
+### Details Page
+![Details](https://raw.githubusercontent.com/SilviyaIvanova91/pet-shelter-with-react/master/screenshots/detailsPage.jpg)
+
+### Edit Page
+![Edit](https://raw.githubusercontent.com/SilviyaIvanova91/pet-shelter-with-react/master/screenshots/editPage.jpg)
+
+### Delete Page
+![Delete](https://raw.githubusercontent.com/SilviyaIvanova91/pet-shelter-with-react/master/screenshots/deletePage.jpg)
+
+### My Profile Page
+![MyProfile](https://raw.githubusercontent.com/SilviyaIvanova91/pet-shelter-with-react/master/screenshots/myProfilePage.jpg)
