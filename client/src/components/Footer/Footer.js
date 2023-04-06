@@ -3,8 +3,8 @@ export const Footer = () => {
     <div id="footer">
       <div id="footnote">
         <div className="section">
-          Copyright &copy; 2023 <a href="/">Silviya Ivanova</a> All rights
-          reserved | Website Template By{" "}
+          Project Created By <a href="/">Silviya Ivanova </a>| Website Template
+          By{" "}
           <a href="http://www.freewebsitetemplates.com/">
             freewebsitetemplates.com
           </a>

@@ -35,6 +35,7 @@ function App() {
                 <Route path="/catalog" element={<Catalog />} />
                 <Route path="/catalog/:petId" element={<DetailsPet />} />
                 <Route path="/404" element={<ErrorPage />} />
+                <Route path="*" element={<ErrorPage />} />
                 <Route path="/server-error" element={<ServerError />} />
                 <Route element={<RouteGuard />}>
                   <Route path="/my-profile/:userId" element={<MyProfile />} />
