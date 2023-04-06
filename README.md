@@ -27,5 +27,6 @@ Here you can add different animals looking for their new home and also find your
 ---
 
 <h3> Preview: </h3>
+
 ### Home Page
-![home-page](https://raw.githubusercontent.com/SilviyaIvanova91/pet-shelter-with-react/master/screenshots/homePage.jpg)
+![Home](https://raw.githubusercontent.com/SilviyaIvanova91/pet-shelter-with-react/master/screenshots/homePage.jpg)
