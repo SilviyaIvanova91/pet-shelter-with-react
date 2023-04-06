@@ -24,7 +24,8 @@ export const AuthProvider = ({ children }) => {
 
       navigate("/catalog");
     } catch (error) {
-      navigate("/server-error", { state: { error } });
+      const msg = error.message;
+      navigate("/server-error", { state: { msg } });
       return;
     }
   };
@@ -49,7 +50,8 @@ export const AuthProvider = ({ children }) => {
 
       navigate("/catalog");
     } catch (error) {
-      navigate("/server-error", { state: { error } });
+      const msg = error.message;
+      navigate("/server-error", { state: { msg } });
       return;
     }
   };
