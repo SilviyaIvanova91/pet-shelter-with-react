@@ -40,8 +40,7 @@ const requester = async (method, url, data) => {
 
     return result;
   } catch (error) {
-    const msg = error.message;
-    alert(msg);
+    alert(error.message);
     return;
   }
 };
