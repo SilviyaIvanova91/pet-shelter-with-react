@@ -10,7 +10,8 @@ Here you can add different animals looking for their new home and also find your
 - [Visual Studio Code](https://code.visualstudio.com/ "Visual Studio Code")
 - [ReactJS](https://react.dev/)
 - [SoftUni Practice Server](https://github.com/softuni-practice-server/softuni-practice-server)
---
+---
+
 - NPM packages:
   - [react](https://www.npmjs.com/package/react "react")
   - [react-router-dom](https://www.npmjs.com/package/react-bootstrap "react-router-dom")
