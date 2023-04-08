@@ -23,11 +23,11 @@ export const Delete = () => {
     await petService.deletePet(pet._id);
 
     deletePet(pet._id);
-    navigate("/catalog");
+    navigate(`/catalog`);
   };
 
   const closeHandler = () => {
-    setPetAction(navigate(-1));
+    setPetAction(navigate(`/catalog/${petId}`));
   };
 
   return (
